@@ -4,18 +4,18 @@
 #include <random>
 #include <algorithm>
 
-using namespace std;
+//using namespace std;
 
-random_device rd;
-mt19937 gen(rd());
+std::random_device rd;
+std::mt19937 gen(rd());
 
 int GetRandom(int min, int max) {
-    uniform_int_distribution<> distrib(min, max);
+    std::uniform_int_distribution<> distrib(min, max);
     return distrib(gen);
 }
 
 void PrintSkills() {
-    vector<string> availableSkills = {
+    std::vector<std::string> availableSkills = {
         "Blade", "Blunt", "Hand to Hand", "Armorer", "Block", "Heavy Armor", "Athletics", "Acrobatics",
         "Light Armor", "Security", "Sneak", "Marksman", "Mercantile", "Speechcraft", "Illusion",
         "Alchemy", "Conjuration", "Mysticism", "Alteration", "Destruction", "Restoration"
@@ -23,20 +23,20 @@ void PrintSkills() {
     shuffle(availableSkills.begin(), availableSkills.end(), gen);
 
     for (int i = 0; i < 7; ++i) {
-        cout << availableSkills.at(i) << '\n';
+        std::cout << availableSkills.at(i) << '\n';
     }
 }
 void PrintArchetype() {
-    vector<string> archetypeList = {
+    std::vector<std::string> archetypeList = {
         "Warrior", "Mage", "Thief"
     };
-    cout << archetypeList.at(GetRandom(0, 2)) << '\n';
+    std::cout << archetypeList.at(GetRandom(0, 2)) << '\n';
 }
 void PrintRace() {
-    vector<string> raceList = {
+    std::vector<std::string> raceList = {
         "Argonian", "Khajiit", "Dark Elf", "High Elf", "Orc", "Wood Elf", "Breton", "Imperial", "Nord", "Redguard"
     };
-    vector<vector<string>> subRaces = {
+    std::vector<std::vector<std::string>> subRaces = {
         {"Arnesia", "Thornmarsh"},
         {"Anequina", "Pellitine"},
         {"Vvardenfell", "Mainland"},
@@ -50,41 +50,41 @@ void PrintRace() {
     };
     int mainRace = GetRandom(0, 9);
     bool subRaceType = GetRandom(0, 1);
-    cout << raceList[mainRace] << " - " << subRaces[mainRace][subRaceType] << '\n';
+    std::cout << raceList[mainRace] << " - " << subRaces[mainRace][subRaceType] << '\n';
 }
 void PrintSign() {
-    vector<string> starSigns = {
+    std::vector<std::string> starSigns = {
         "Apprentice", "Atronach", "Lady", "Lord", "Lover", "Mage", "Ritual", "Serpent", "Shadow", "Steed", "Thief", "Tower", "Warrior"
     };
-    cout << starSigns.at(GetRandom(0, 12)) << '\n';
+    std::cout << starSigns.at(GetRandom(0, 12)) << '\n';
 }
 void PrintGender() {
-    vector<string> sex = {
+    std::vector<std::string> sex = {
         "Male", "Female"
     };
-    cout << sex.at(GetRandom(0, 1)) << '\n';
+    std::cout << sex.at(GetRandom(0, 1)) << '\n';
 }
 void PrintAttributes() {
-    vector<string> attributes = {
+    std::vector<std::string> attributes = {
         "Strength", "Intelligence", "Willpower", "Agility", "Speed", "Endurance", "Personality", "Luck"
     };
     shuffle(attributes.begin(), attributes.end(), gen);
     for (size_t i = 0; i < 2; ++i) {
-        cout << attributes.at(i) << '\n';
+        std::cout << attributes.at(i) << '\n';
     }
 }
 void RandomClass() {
-    cout << "Gender:" << '\n';
+    std::cout << "Gender:" << '\n';
     PrintGender();
-    cout << "\nRace:" << '\n';
+    std::cout << "\nRace:" << '\n';
     PrintRace();
-    cout << "\nStar Sign:" << '\n';
+    std::cout << "\nStar Sign:" << '\n';
     PrintSign();
-    cout << "\nArchetype:" << '\n';
+    std::cout << "\nArchetype:" << '\n';
     PrintArchetype();
-    cout << "\nAttributes:" << '\n';
+    std::cout << "\nAttributes:" << '\n';
     PrintAttributes();
-    cout << "\nMajor Skills:" << '\n';
+    std::cout << "\nMajor Skills:" << '\n';
     PrintSkills();
 }
 
